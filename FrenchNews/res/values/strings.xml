@@ -4,7 +4,15 @@
     <string name="app_name">FrenchNews</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-	<string name="add_item">Add</string>
-	<string name="about">About</string>
-	<string name="refresh">Refresh</string>
+    <string name="add_item">Add</string>
+    <string name="about">About</string>
+    <string name="refresh">Refresh</string>
+    <string name="title_activity_main">MainActivity</string>
+    
+    
+    
+    <string name="tab_page_num">This is tab: </string>
+    <string name="tab_page_num_menu">This is tab with menu: </string>
+    <string name="menu_item_refresh">Refresh</string>
+
 </resources>
