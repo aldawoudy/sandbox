@@ -2,17 +2,17 @@
 
     <item
         android:id="@+id/add_item"
-        android:icon="@drawable/plus"
+        android:icon="@drawable/content_new"
         android:showAsAction="ifRoom"
         android:title="@string/add_item"
         android:titleCondensed="@string/add_item">
     </item>
     <item
-        android:id="@+id/about"
-        android:icon="@drawable/home"
+        android:id="@+id/refresh"
+        android:icon="@drawable/navigation_refresh"
         android:showAsAction="ifRoom"
-        android:title="@string/about"
-        android:titleCondensed="@string/about">
+        android:title="@string/refresh"
+        android:titleCondensed="@string/refresh">
     </item>
 
-</menu>
+</menu>	
