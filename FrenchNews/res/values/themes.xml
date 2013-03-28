@@ -12,9 +12,9 @@
     
     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid">
         <item name="titleTextStyle">@style/TitleText</item>
-        <item name="icon">@drawable/ic_launcher</item>
-    	<item name="displayOptions">showHome</item>
-    	<item name="backgroundSplit">@drawable/bg_striped_split</item>
+<!--         <item name="icon">@drawable/ic_launcher</item> -->
+<!--     	<item name="displayOptions">showHome</item> -->
+<!--     	<item name="backgroundSplit">@drawable/bg_striped_split</item> -->
 <!--         <item name="android:titleTextStyle">@style/TitleText</item> -->
     </style>
     
@@ -23,11 +23,17 @@
 <!--         <item name="android:textSize">10sp</item> -->
         <item name="android:textColor">#33b5e5</item>
 		<item name="android:textStyle">normal</item>
+<!--  		<item name="android:width">80dp</item>  -->
+		<item name="android:height">25dp</item>
+		<item name="android:paddingTop">0dp</item>
+		<item name="android:paddingBottom">5dp</item>
+<!-- 		<item name="android:paddingLeft">10dp</item> -->
+<!-- 		<item name="android:paddingRight">10dp</item> -->
     </style>
     
     <!-- Title on action bar -->
      <style name="TitleText" >
 <!--         <item name="android:textColor">@android:color/darker_gray</item> -->
-<!--         <item name="android:textSize">12sp</item> -->
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>

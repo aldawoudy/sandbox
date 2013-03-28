@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NewsApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="logo_description">News App</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="mynews">My NeWs!</string>
+    <string name="title_activity_privacy">PrivacyActivity</string>
+    <string name="_continue">Continue</string>
+    <string name="accept">Accept</string>
+    <string name="refuse">Refuse</string>
+    <string name="latest">Latest</string>
+    <string name="politics">Politics</string>
+    <string name="sports">Sports</string>
+    <string name="economics">Economics</string>
+	<string name="tab_words">Words</string>
+	<string name="tab_numbers">Numbers</string>
+	<string name="newsItemDesc">News Item Image Desc</string>
+</resources>
