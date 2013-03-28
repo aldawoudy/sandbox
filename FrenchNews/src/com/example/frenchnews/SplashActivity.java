@@ -37,11 +37,27 @@ public class SplashActivity extends SherlockFragmentActivity {
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		
-		mTabsAdapter.addTab(bar.newTab().setIcon(R.drawable.social_chat), FragmentOne.class, null);
-		mTabsAdapter.addTab(bar.newTab().setIcon(R.drawable.social_person), FragmentTwo.class, null);
-		mTabsAdapter.addTab(bar.newTab().setIcon(R.drawable.social_group), FragmentOne.class, null);
-		mTabsAdapter.addTab(bar.newTab().setIcon(R.drawable.location_map), FragmentTwo.class, null);
-		mTabsAdapter.addTab(bar.newTab().setIcon(R.drawable.action_settings), FragmentOne.class, null);
+		Bundle argsSocial = new Bundle();
+		Bundle argsProfile = new Bundle();
+		Bundle argsGroup = new Bundle();
+		Bundle argsMap = new Bundle();
+		Bundle argsSettings = new Bundle();
+		argsSocial.putString("tab", "Social Tab");
+		argsProfile.putString("tab", "Profile Tab");
+		argsGroup.putString("tab", "Group Tab");
+		argsMap.putString("tab", "Map Tab");
+		argsSettings.putString("tab", "Settings Tab");
+		String[] tabNames = {"Social Tab", "Profile Tab", "Group Tab", "Map Tab", "Settings Tab"};
+		
+		Bundle args = new Bundle();
+		
+		args.putString("tab", tabNames[mViewPager.getCurrentItem()]);
+		
+		mTabsAdapter.addTab(bar.newTab().setText("Social").setIcon(R.drawable.social_chat), FragmentOne.class, argsSocial);
+		mTabsAdapter.addTab(bar.newTab().setText("Profile").setIcon(R.drawable.social_person), FragmentOne.class, argsProfile);
+		mTabsAdapter.addTab(bar.newTab().setText("Groups").setIcon(R.drawable.social_group), FragmentOne.class, argsGroup);
+		mTabsAdapter.addTab(bar.newTab().setText("Map").setIcon(R.drawable.location_map), FragmentOne.class, argsMap);
+		mTabsAdapter.addTab(bar.newTab().setText("Social").setIcon(R.drawable.action_settings), FragmentOne.class, argsSettings);
 		
 	}
 

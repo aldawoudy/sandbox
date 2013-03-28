@@ -13,16 +13,20 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.example.json.JSONParser;
 import com.viewpagerindicator.PageIndicator;
-import com.viewpagerindicator.TabPageIndicator;
+import com.viewpagerindicator.TitlePageIndicator;
+import com.viewpagerindicator.TitlePageIndicator.IndicatorStyle;
+import com.viewpagerindicator.TitlePageIndicator.OnCenterItemClickListener;
 
 
 
-public class MainActivity extends SherlockFragmentActivity {
+
+public class MainActivity extends SherlockFragmentActivity implements OnCenterItemClickListener {
 
 	TestFragmentAdapter mAdapter;
     ViewPager mPager;
@@ -100,18 +104,20 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.simple_titles);
 		
 		checkTabs();
-
-		setContentView(R.layout.simple_tabs);
 		
 		mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
 
         mPager = (ViewPager)findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
-
-        mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
-        mIndicator.setViewPager(mPager);
+        
+        TitlePageIndicator indicator = (TitlePageIndicator)findViewById(R.id.indicator);
+        indicator.setViewPager(mPager);
+        indicator.setFooterIndicatorStyle(IndicatorStyle.Underline);
+        indicator.setOnCenterItemClickListener(this);
+        mIndicator = indicator;
 		
 	}
 	
@@ -136,6 +142,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		@Override
 	    public CharSequence getPageTitle(int position) {
+			//Log.d("Tab title", tabsArray[position]);
 	    	return tabsArray[position];
 	    }
 		
@@ -146,6 +153,11 @@ public class MainActivity extends SherlockFragmentActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getSherlock().getMenuInflater().inflate(R.menu.activity_itemlist, menu);
 		return true;
+	}
+
+	@Override
+	public void onCenterItemClick(int position) {
+		Toast.makeText(this, "You clicked the center title!", Toast.LENGTH_SHORT).show();
 	}
 
 }

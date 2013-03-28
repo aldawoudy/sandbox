@@ -8,6 +8,9 @@
 package com.example.frenchnews;
 
 public final class R {
+    public static final class array {
+        public static final int sections=0x7f0b0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1374,11 +1377,12 @@ containing a value of this type.
         public static final int sherlock_spinner_dropdown_item=0x7f03001b;
         public static final int sherlock_spinner_item=0x7f03001c;
         public static final int simple_tabs=0x7f03001d;
+        public static final int simple_titles=0x7f03001e;
     }
     public static final class menu {
-        public static final int activity_itemlist=0x7f0b0000;
-        public static final int main=0x7f0b0001;
-        public static final int splash=0x7f0b0002;
+        public static final int activity_itemlist=0x7f0c0000;
+        public static final int main=0x7f0c0001;
+        public static final int splash=0x7f0c0002;
     }
     public static final class string {
         public static final int about=0x7f0a0013;
@@ -1469,6 +1473,10 @@ containing a value of this type.
  		<item name="android:paddingRight">10dp</item> 
          */
         public static final int CustomTabPageIndicator=0x7f090062;
+        /**  		<item name="android:paddingLeft">10dp</item> 
+ 		<item name="android:paddingRight">10dp</item> 
+         */
+        public static final int CustomTitlePageIndicator=0x7f090063;
         public static final int DialogWindowTitle_Sherlock=0x7f09003a;
         public static final int DialogWindowTitle_Sherlock_Light=0x7f09003b;
         public static final int Sherlock___TextAppearance_Small=0x7f09004e;
@@ -1520,7 +1528,7 @@ containing a value of this type.
         public static final int Theme_VPI=0x7f090060;
         /**  Title on action bar 
          */
-        public static final int TitleText=0x7f090063;
+        public static final int TitleText=0x7f090064;
         public static final int Widget=0x7f090001;
         public static final int Widget_IconPageIndicator=0x7f090004;
         public static final int Widget_Sherlock_ActionBar=0x7f090006;

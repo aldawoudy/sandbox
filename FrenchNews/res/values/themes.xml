@@ -8,6 +8,7 @@
     </style>
     <style name="Theme.VPI" parent="Theme.Styled">
        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
+       <item name="vpiTitlePageIndicatorStyle">@style/CustomTitlePageIndicator</item>
     </style>
     
     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid">
@@ -27,6 +28,21 @@
 		<item name="android:height">25dp</item>
 		<item name="android:paddingTop">0dp</item>
 		<item name="android:paddingBottom">5dp</item>
+<!-- 		<item name="android:paddingLeft">10dp</item> -->
+<!-- 		<item name="android:paddingRight">10dp</item> -->
+    </style>
+    
+    <style name="CustomTitlePageIndicator">
+<!--         <item name="android:textSize">10sp</item> -->
+        <item name="android:textColor">#FF8800</item>
+        <item name="footerColor">#FF8800</item>
+		<item name="android:textStyle">normal</item>
+<!--  		<item name="android:width">80dp</item>  -->
+<!-- 		<item name="android:height">25dp</item> -->
+<!-- 		<item name="android:paddingTop">0dp</item> -->
+<!-- 		<item name="android:paddingBottom">5dp</item> -->
+		<item name="selectedColor">#FF8800</item>
+        <item name="selectedBold">true</item>
 <!-- 		<item name="android:paddingLeft">10dp</item> -->
 <!-- 		<item name="android:paddingRight">10dp</item> -->
     </style>
