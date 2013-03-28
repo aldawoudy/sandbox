@@ -1,5 +1,12 @@
 package com.example.frenchnews;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,9 +15,10 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.example.json.JSONParser;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
-import com.actionbarsherlock.view.Menu;
 
 
 
@@ -20,11 +28,81 @@ public class MainActivity extends SherlockFragmentActivity {
     ViewPager mPager;
     PageIndicator mIndicator;
 	
-    private static final String[] CONTENT = new String[] { "Latest", "Politics", "Economy", "Sports", "Local" };
+    private static String url = "http://10.0.2.2/getTabs.php";
+    private static final String TAG_TABS = "tabs";
+    private static final String TAG_VERSION = "version";
+   //private static final String TAG_TAB = "tab";
+    
+    private SharedPreferences tabsPrefs;
+    
+    private JSONObject tabsJson;
+    private int tabsVersion;
+    private int tabsServerVersion;
+    private JSONParser jParser;
+    private JSONArray tabsJSON = null;
+    private String[] tabsArray;
+    
+    String tabs;
+    
+
+	private void checkTabs() {
+		tabsPrefs = getSharedPreferences("tabs", Activity.MODE_PRIVATE);
+		tabs = tabsPrefs.getString("tabs", null);
+		tabsVersion = tabsPrefs.getInt("tabsVersion", 0);
+		
+		jParser = new JSONParser();
+		tabsJson = jParser.getJSONFromUrl(url);
+        
+		if(tabsUpdated(tabsVersion) || tabs == null || tabs == "") {
+			updateTabs();
+		}
+		
+		tabsArray = tabs.split("#");
+	}
+	
+    private boolean tabsUpdated(int currentVersion) {
+    	try {
+        	tabsServerVersion = tabsJson.getInt(TAG_VERSION);
+        	Log.d("Tabs Server Version","x" + tabsServerVersion);
+        	if(tabsServerVersion > currentVersion) {
+        		return true;
+        	} else {
+        		return false;
+        	}
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    	return false;
+    }
+    
+    private void updateTabs() {
+        try {
+        	tabsJSON = tabsJson.getJSONArray(TAG_TABS);
+        	tabs = new String();
+            for(int i = 0; i < tabsJSON.length(); i++){
+            	tabs += tabsJSON.getString(i);
+            	if(i < tabsJSON.length() -1) {
+            		tabs += "#";
+            	}
+            }
+            
+            Editor editor = tabsPrefs.edit();
+            editor.putString("tabs", tabs);
+            editor.putInt("tabsVersion", tabsJson.getInt(TAG_VERSION));
+            editor.commit();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		checkTabs();
+
 		setContentView(R.layout.simple_tabs);
 		
 		mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
@@ -37,9 +115,10 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 	}
 	
+	
 	class TestFragmentAdapter extends FragmentPagerAdapter {
 		
-		private int mCount = CONTENT.length;
+		private int mCount = tabsArray.length;
 		
 		public TestFragmentAdapter(FragmentManager fm) {
 			super(fm);
@@ -57,7 +136,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		@Override
 	    public CharSequence getPageTitle(int position) {
-	    	return CONTENT[position];
+	    	return tabsArray[position];
 	    }
 		
 	}
